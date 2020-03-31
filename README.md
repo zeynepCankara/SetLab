@@ -11,14 +11,14 @@
 - Example SetLab Programs 
 
 ### **Project 1 Report** :pencil: 
-* [Project 1 Report](https://docs.google.com/document/d/1o8bRryfNgd8XCsKfEZn_50xF8hk2AzLmbinIgq2WIxM/edit?usp=sharing)
+* [Project 1 Report](https://docs.google.com/document/d/1mkUj1QRcegbJqRd91uCttY9NKCM8czoi_KYK2sXhPnM/edit?usp=sharing)
 
 ### **Project 2**
 - BNF Description of the SetLab Language
 - Parser for SetLab Language (written with Yacc)
 
 ### **Project 2 Report** :pencil: 
-* [Project 2 Report](https://docs.google.com/document/d/1o8bRryfNgd8XCsKfEZn_50xF8hk2AzLmbinIgq2WIxM/edit?usp=sharing)
+* [Project 2 Report](https://docs.google.com/document/d/1mkUj1QRcegbJqRd91uCttY9NKCM8czoi_KYK2sXhPnM/edit?usp=sharing)
 
 #### **Team Members**
 
