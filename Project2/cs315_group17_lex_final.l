@@ -6,6 +6,7 @@ void yyerror(char *);
 main main
 print print 
 return return
+pass pass 
 if if
 else else
 new_line "\n"
@@ -15,7 +16,7 @@ close_par ")"
 open_bracket "{"
 close_bracket "}"
 underscore  "_"
-single_quote "'"
+/* single_quote "'" */
 coma ","
 dot "."
 colon ":"
@@ -48,6 +49,7 @@ contain_key "contain"
 while "while"
 for "for"
 function "func"
+loop_assign_op "="
 equal_op "=="
 not_equal_op "!="
 greater_or_equal_op ">="
@@ -56,57 +58,57 @@ greater_op ">"
 lower_op "<"
 or_op "||"
 and_op "&&"
+bool {true}|{false} 
+int {sign}?{number}
 
 %option yylineno
 %%
- /*Print the tokens*/
-{main} return main;
+ /*Return the tokens*/
+{main} return MAIN;
 {return} return RETURN;
+{pass} return PASS;
 {if} return IF;
 {else} return ELSE;
-{new_line}              printf("NEW_LINE-");
-{space}                 printf("SPACE-");
-{open_par}              printf("OPEN_PAR-");
-{close_par}             printf("CLOSE_PAR-");
-{open_bracket}          printf("OPEN_BRACKET-");
-{close_bracket}         printf("CLOSE_BRACKET-");
-{underscore}            printf("UNDERSCORE-");
-{single_quote}          printf("SINGLE_QUOTE-");
-{coma}                  printf("COMA-");
-{dot}                   printf("DOT-");
-{number}                printf("NUMBER-");
-{colon}                 printf("COLON-");
-{comment_sign}          printf("COMMENT_SIGN-");
-{sign}                  printf("SIGN-");
-{letter}                printf("LETTER-");
-{assign_op}             printf("ASSING_OP-");
-{new}                   printf("NEW_KEYWORD-");
-{set_keyword}           printf("SET-");
-{delete}                printf("DELETE-");
-{true}                  printf("TRUE-");
-{false}                 printf("FALSE-");
-{cartesian}             printf("CARTESIAN-");
-{add}                   printf("ADD-");
-{union}                 printf("UNION-");
-{is_subset}             printf("IS_SUBSET-");
-{console_in}            printf("CONSOLE_IN-");
-{is_superset}           printf("IS_SUPERSET-");
-{intersection}          printf("INTERSECTION-");
-{element_in}            printf("ELEMENT_IN-");
-{console_out}           printf("CONSOLE_OUT-");
-{contain_key}           printf("CONTAIN_KEY-");
-{while}                 printf("WHILE-");
-{for}                   printf("FOR-");
-{function}              printf("FUNCTION-");
-{equal_op}              printf("EQUAL-");
-{not_equal_op}          printf("NOT_EQUAL-");
-{greater_or_equal_op}   printf("GREATER_OR_EQUAL-");
-{lower_or_equal_op}     printf("LOWER_OR_EQUAL-");
-{greater_op}            printf("GREATER-");
-{lower_op}              printf("LOWER-");
-{or_op}                 printf("OR-");
-{and_op}                printf("AND-");
-{identifier}            printf("IDENTIFIER-");
+{open_par}  return LP;
+{close_par}  return RP;
+{open_bracket} return LB;
+{close_bracket}  return RB; 
+{underscore}     return UNDERSCORE;
+{coma}           return COMMA;
+{dot}             return DOT;
+{int}             return INTEGER; 
+{colon}           return COLON;
+{comment_sign}    return COMMENT_SIGN;
+{assign_op}       return ASSING_OP;
+{new}             return NEW_KEYWORD;
+{set_keyword}     return SET;
+{delete}          return DELETE;
+{bool}            return BOOLEAN;
+{cartesian}       return CARTESIAN;
+{add}             return ADD;
+{union}           return UNION;
+{is_subset}       return IS_SUBSET;
+{console_in}      return CONSOLE_IN;
+{is_superset}     return IS_SUPERSET;
+{intersection}    return INTERSECTION;
+{element_in}      return ELEMENT_IN;
+{console_out}     return CONSOLE_OUT;
+{contain_key}     return CONTAIN_KEY;
+{while}           return WHILE;
+{for}              return FOR;
+{function}          return FUNCTION;
+{loop_assign_op}          return LOOP_ASSIGN_OP;
+{equal_op}             return EQUAL;
+{not_equal_op}         return NOT_EQUAL;
+{greater_or_equal_op}   return GREATER_OR_EQUAL;
+{lower_or_equal_op}     return LOWER_OR_EQUAL;
+{greater_op}            return GREATER;
+{lower_op}              return LOWER;
+{or_op}                 return OR;
+{and_op}                return AND;
+{identifier}            return IDENTIFIER;
+{new_line} ; 
+[ \t] ;
 %%
 
 int yywrap(void){

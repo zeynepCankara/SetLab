@@ -7,11 +7,55 @@ extern int yylineno;
 %}
 
 // ---Do the Token assignments below----
-// Exe: %token ASSIGNMENTOP
+%token MAIN
+%token RETURN
+%token LOOP_ASSIGN_OP
+%token SEMI_COL
+%token NL
+%token LP
+%token RP
+%token LB
+%token RB
+%token LSB
+%token RSB 
+%token COMMA
+%token DOT
+%token BOOLEAN
+%token NEW
+%token SET
+%token IDENTIFIER
+%token INT
+%token DIGIT
+%token OR
+%token AND
+%token EQUAL
+%token NOT_EQUAL
+%token SMALLER
+%token BIGGER
+%token SMALLER_EQUALS
+%token BIGGER_EQUALS
+%token SET_IN
+%token CONSOLE_IN
+%token FUNCTION
+%token WHILE
+%token FOR
+%token IF
+%token ELSE
+%token PASS
+%token PRINT
+%token RETURN
+%token DELETE
+%token UNION
+%token INTERSECTION
+%token ADD
+%token CARTESIAN
+%token SUBSET
+%token SUPERSET
+%token CONTAIN
 
 
-// Exe: %start program
-// Exe: %right ASSIGNMENTOP
+%start program
+%right ASSIGN_OP
 
 %%
 
