@@ -75,6 +75,14 @@ extern int yylineno;
 // ***** SETS *****
 
 // ******* LOOPS *********
+loop:
+	while_stmt
+	| for_stmt 
+
+while_stmt: 
+
+for_stmt: 
+
 // ******* INPUTS ********
 // ******* OUTPUTS ********
 
