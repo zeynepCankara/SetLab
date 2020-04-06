@@ -50,7 +50,8 @@ extern int yylineno;
 %token OR;
 %token AND;
 %token IDENTIFIER;
-
+%token SET_TYPE;
+%token END_STMT;
 
 %start program
 %right ASSIGN_OP
@@ -63,16 +64,43 @@ extern int yylineno;
 // program:
 //	predicateDeclarations main
 
-// main:
-//	MAIN LP RP LB stmts RB
+main:
+	MAIN LP RP LB statements RB
+
+statememts: 
+	statement
+	| statememts statememt
+
+statememt:
 
 
 // ***** DECLERATIONS *****
-
+spaces:
+	space
 
 // ***** INITIALIZE *****
+set_init: 
+	// $set <== new Set
+	SET_TYPE ASSIGN_OP NEW_KEYWORD SET END_STMT
+
 
 // ***** SETS *****
+set_add_op:
+	// $set.add(identifier)
+	SET_TYPE DOT ADD LP IDENTIFIER RP END_STMT
+
+set_delete_op:
+	// $set.delete()
+	SET_TYPE DOT DELETE LP RP
+
+set_union_op:
+	// $set1<==$set2.union($set3)
+	SET_TYPE ASSIGN_OP SET_TYPE DOT UNION LP SET_TYPE RP 
+
+set_intersection_op:
+	// $set1<==$set2.intersection($set3)
+	SET_TYPE ASSIGN_OP SET_TYPE DOT INTERSECTION LP SET_TYPE RP 
+
 
 // ******* LOOPS *********
 loop:

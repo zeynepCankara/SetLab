@@ -1,0 +1,77 @@
+main(){
+    # Program 1: #
+    #Create Set #
+    $set1 <== new Set
+    #Adding element to Set#
+    $set1.add(Zeynep)
+    $set1.add(Tolga)
+    $set1.add(Naci)
+    # Create other set #
+    $set2 <== new Set
+    # Adding element to Set #
+    $set1.add(JF)
+    $set1.add(Kennedy)
+    $set1.add(government)
+    #Union #
+    $set3 <== set1.union(set2)
+    #Intersection#
+    $set4 <== $set1.intersection($set2)
+    #Set Relations#
+    bool1 <== $set3.isSubset($set1)   #False#
+    bool2 <== $set2.isSubset($set3)   #True#
+    bool3 <== $set3.isSuperset($set2) #True#
+    bool4 <== $set4.isSuperset($set2) #False#
+
+
+    # Program 2: # 
+    #Create Set #
+    $set1 <== new Set
+    firstCount <== 5;
+    secondCount <== 7;
+    thirdCount <== 9;
+    #Adding element to Set#
+    $set1.add(firstCount)
+    $set1.add(secondCount)
+    $set1.add(thirdCount)
+    # Print set #
+    $set1.print()
+    # Create other set #
+    $set2 <== new Set
+    # take Input from Console#
+    $set2 <== inputElements()
+    # Print set #
+    $set2.print()
+    #Intersection#
+    $set3 <== $set1.intersection($set2)
+    # Print set #
+    $set3.print()
+    check <== set3.isSubset(set1)
+    while(check){pass}
+    delete $set1
+    delete $set2
+    delete $set3
+
+
+    # Program 3: #
+    #Create Set #
+    $firstGrade <== new Set
+    $secondGrade <==new Set
+    $thirdGrade <== new Set
+    student1 <== 'kerim';
+    student2 <== 'gamze';
+    student3 <== 'hakan';
+    #Adding element to Set#
+    $firstGrade.add(student1)
+    $firstGrade.add('emin')
+    $firstGrade.add('Vehbi')
+    $secondGrade.add(student2)
+    $secondGrade.add(student3)
+    $secondGrade.add('ali')
+    # Print set #
+    $firstGrade.print()
+    $secondGrade.print()
+    for(i=1:3){pass}
+    func graduate(args){pass}
+    $firstGrade.func_name(args)
+    delete $firstGrade
+}
