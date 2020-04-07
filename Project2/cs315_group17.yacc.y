@@ -131,14 +131,16 @@ set_logical_expr:
 	|subset_expr
 
 
-set_contain_expr:
+set_contain_expr: 
 	SET_TYPE DOT CONTAIN_KEY LP IDENTIFIER RP END_STMT
 	|SET_TYPE DOT CONTAIN_KEY LP ALPHANUMERIC RP END_STMT
 	|SET_TYPE DOT CONTAIN_KEY LP INTEGER RP END_STMT
 
 superset_expr:
+	// $set.isSuperset($set)
 	SET_TYPE DOT IS_SUPERSET LP SET_TYPE RP END_STMT
 subset_expr:
+	// $set.isSubset($set)
 	SET_TYPE DOT IS_SUBSET LP SET_TYPE RP END_STMT
 
 
@@ -160,7 +162,7 @@ set_delete_op:
 	SET_TYPE DOT DELETE LP RP END_STMT
 
 set_union_op:
-	// $set1<==$set2.union($set3),
+	// $set1<==$set2.union($set3);
 	SET_TYPE ASSIGN_OP SET_TYPE DOT UNION LP SET_TYPE RP END_STMT
 
 set_intersection_op:
@@ -176,21 +178,40 @@ loops:
 	|for_stmt 
 
 while_stmt: 
+	// while(logical_expr){block_stmts}
 	WHILE LP logical_expr RP LB block_stmts RB
 
 for_stmt: 
+	// for(i=12:200){block_stmts}
 	FOR LP IDENTIFIER LOOP_ASSIGN_OP INTEGER COLON INTEGER LB block_stmts RB 
 
 
 block_stmts:
+	// pass;
+	// return;
 	PASS END_STMT
 	|RETURN END_STMT
 
 logical_expr: 
+	// 4 < 89
+	// true && false
+	// a >= b
 	INTEGER LOWER INTEGER
 	|INTEGER GREATER INTEGER 
 	|INTEGER LOWER_OR_EQUAL INTEGER 
 	|INTEGER GREATER_OR_EQUAL INTEGER 
+	|IDENTIFIER LOWER IDENTIFIER
+	|IDENTIFIER GREATER IDENTIFIER
+	|IDENTIFIER LOWER_OR_EQUAL IDENTIFIER
+	|IDENTIFIER GREATER_OR_EQUAL IDENTIFIER
+	|IDENTIFIER AND IDENTIFIER
+	|IDENTIFIER OR IDENTIFIER
+	|BOOLEAN AND BOOLEAN
+	|BOOLEAN OR BOOLEAN
+	|BOOLEAN EQUAL BOOLEAN
+	|BOOLEAN NOT_EQUAL BOOLEAN
+	|IDENTIFIER EQUAL IDENTIFIER
+	|IDENTIFIER NOT_EQUAL IDENTIFIER
 
 
 // ******* INPUTS ********
