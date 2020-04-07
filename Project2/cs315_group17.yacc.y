@@ -25,36 +25,37 @@ extern int yylineno;
 %token ASSING_OP
 %token NEW_KEYWORD
 %token SET
-%token DELETE;
-%token BOOLEAN;
-%token CARTESIAN;
-%token ADD;
-%token UNION;
-%token IS_SUBSET;
-%token CONSOLE_IN;
-%token IS_SUPERSET;
-%token INTERSECTION;
-%token ELEMENT_IN;
-%token CONSOLE_OUT;
-%token CONTAIN_KEY;
-%token WHILE;
-%token FOR;
-%token FUNCTION;
-%token LOOP_ASSIGN_OP;
-%token EQUAL;
-%token NOT_EQUAL;
-%token GREATER_OR_EQUAL;
-%token LOWER_OR_EQUAL;
-%token GREATER;
-%token LOWER;
-%token OR;
-%token AND;
-%token IDENTIFIER;
+%token DELETE
+%token BOOLEAN
+%token CARTESIAN
+%token ADD
+%token UNION
+%token IS_SUBSET
+%token CONSOLE_IN
+%token IS_SUPERSET
+%token INTERSECTION
+%token ELEMENT_IN
+%token CONSOLE_OUT
+%token CONTAIN_KEY
+%token WHILE
+%token FOR
+%token FUNCTION
+%token LOOP_ASSIGN_OP
+%token EQUAL
+%token NOT_EQUAL
+%token GREATER_OR_EQUAL
+%token LOWER_OR_EQUAL
+%token GREATER
+%token LOWER
+%token OR
+%token AND
+%token IDENTIFIER
 %token ALPHANUMERIC
-%token SET_TYPE;
-%token END_STMT;
+%token SET_TYPE
+%token END_STMT
 
 //%start program
+%start program
 %right ASSIGN_OP
 
 %%
@@ -96,7 +97,7 @@ expr:
 	|int_expr
 	|bool_expr
 	|set_expr_list
-elemenr_expr:
+element_expr:
 	IDENTIFIER ASSING_OP ALPHANUMERIC END_STMT
 	|IDENTIFIER ASSING_OP IDENTIFIER END_STMT
 int_expr:
@@ -151,8 +152,8 @@ set_init:
 set_add_op:
 	// $set.add(identifier)
 	SET_TYPE DOT ADD LP IDENTIFIER RP END_STMT
-	| SET_TYPE DOT ADD LP ALPHANUMERIC RP END_STMT
-	| SET_TYPE DOT ADD LP INTEGER RP END_STMT
+	|SET_TYPE DOT ADD LP ALPHANUMERIC RP END_STMT
+	|SET_TYPE DOT ADD LP INTEGER RP END_STMT
 
 set_delete_op:
 	// $set.delete();
@@ -172,7 +173,7 @@ cartesian_expr:
 // ******* LOOPS *********
 loops:
 	while_stmt
-	| for_stmt 
+	|for_stmt 
 
 while_stmt: 
 	WHILE LP logical_expr RP LB block_stmts RB
@@ -183,13 +184,13 @@ for_stmt:
 
 block_stmts:
 	PASS END_STMT
-	| RETURN END_STMT
+	|RETURN END_STMT
 
 logical_expr: 
 	INTEGER LOWER INTEGER
-	| INTEGER GREATER INTEGER 
-	| INTEGER LOWER_OR_EQUAL INTEGER 
-	| INTEGER GREATER_OR_EQUAL INTEGER 
+	|INTEGER GREATER INTEGER 
+	|INTEGER LOWER_OR_EQUAL INTEGER 
+	|INTEGER GREATER_OR_EQUAL INTEGER 
 
 
 // ******* INPUTS ********
