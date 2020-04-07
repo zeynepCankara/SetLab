@@ -60,6 +60,7 @@ or_op "||"
 and_op "&&"
 bool {true}|{false} 
 int {sign}?{number}
+
 /* set type */
 set_token "$"
 set_type {set_token}{identifier}*
@@ -112,6 +113,7 @@ end_stmt ";"
 {or_op}                 return OR;
 {and_op}                return AND;
 {identifier}            return IDENTIFIER;
+{alphanumeric}		return ALPHANUMERIC
 {set_type}				return SET_TYPE;
 {end_stmt}				return END_STMT;
 {new_line} ; 
