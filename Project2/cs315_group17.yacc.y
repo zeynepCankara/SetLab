@@ -63,7 +63,7 @@ extern int yylineno;
 
 //Program
 program:
-	predicateDeclarations main
+	main
 
 main:
 	MAIN LP RP LB statements RB
@@ -123,6 +123,7 @@ set_expr:
 	|set_union_op
 	|set_intersection_op
 	|cartesian_expr
+
 set_logical_expr:
 	set_contain_expr
 	|superset_expr
@@ -150,8 +151,8 @@ set_init:
 set_add_op:
 	// $set.add(identifier)
 	SET_TYPE DOT ADD LP IDENTIFIER RP END_STMT
-	SET_TYPE DOT ADD LP ALPHANUMERIC RP END_STMT
-	SET_TYPE DOT ADD LP INTEGER RP END_STMT
+	| SET_TYPE DOT ADD LP ALPHANUMERIC RP END_STMT
+	| SET_TYPE DOT ADD LP INTEGER RP END_STMT
 
 set_delete_op:
 	// $set.delete();
@@ -166,7 +167,7 @@ set_intersection_op:
 	SET_TYPE ASSIGN_OP SET_TYPE DOT INTERSECTION LP SET_TYPE RP END_STMT
 cartesian_expr:
 	// $set1<==$set2.cartesian($set2,$set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT CARTESIAN LP SET_TYPE COMA SET_TYPE RP END_STMT
+	SET_TYPE ASSIGN_OP SET_TYPE DOT CARTESIAN LP SET_TYPE COMMA SET_TYPE RP END_STMT
 	
 // ******* LOOPS *********
 loops:
@@ -174,9 +175,22 @@ loops:
 	| for_stmt 
 
 while_stmt: 
-	
+	WHILE LP logical_expr RP LB block_stmts RB
 
 for_stmt: 
+	FOR LP IDENTIFIER LOOP_ASSIGN_OP INTEGER COLON INTEGER LB block_stmts RB 
+
+
+block_stmts:
+	PASS END_STMT
+	| RETURN END_STMT
+
+logical_expr: 
+	INTEGER LOWER INTEGER
+	| INTEGER GREATER INTEGER 
+	| INTEGER LOWER_OR_EQUAL INTEGER 
+	| INTEGER GREATER_OR_EQUAL INTEGER 
+
 
 // ******* INPUTS ********
 input_set_expr:
