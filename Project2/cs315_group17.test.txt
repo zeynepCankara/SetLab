@@ -54,7 +54,7 @@ main(){
     student2 <== 'gamze';
     student3 <== 'hakan';
 
-    #Adding element to Set#
+    #Adding element to s57et#
     $firstGrade.add(student1);
     $firstGrade.add('emin');
     $firstGrade.add('Vehbi');
