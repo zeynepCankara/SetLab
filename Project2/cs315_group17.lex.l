@@ -27,7 +27,7 @@ digit [0-9]
 non_zero_digit [1-9]
 sign [+-]
 number {non_zero_digit}{digit}*
-letter ({underscore}|{upper}|{lower})
+letter {underscore}|{upper}|{lower}
 alphanumeric ({letter}|{digit})+
 assign_op <==
 identifier [A-Za-z][A-Za-z0-9]*

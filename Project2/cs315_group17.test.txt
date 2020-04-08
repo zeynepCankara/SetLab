@@ -1,83 +1,60 @@
 main(){
-    Hess <== naci;
+    # indetifier initialization #
+    count <== 6;
+    
+    # set initialization  and operations#
     $set1 <== new Set;
-    # Program first #
-    $set1.add(Zeynep);
-    $set1.add(Tolga);
-    $set1.add(Naci);
-    # Create other set #
-    # Adding element to set #
-    $set1.add(JF);
-    $set1.add(Kennedy);
-    $set1.add(government);
-    #Union #
-    # intersecftion #
-    #set Relations#
-    bool1 <== $set3.isSubset( $set1);   #False#
-    bool2 <== $set2.isSubset($set3);   #True#
-    bool3 <== $set3.isSuperset($set2); #True#
-    bool4 <== $set4.isSuperset($set2); #False#
+    $set1 <== inputElements();
+    $set2.input();
+    $set1 <== $set1.intersection($set2);
+    $set1 <== $set1.union($set2);
+    $set1 <== $set1.cart($set2,$set4);
+    
+    # adding operation #
+    $set.add(1);
+    $set.add('naci');
+    $set.add(count);
+    $set.add($set1);
+    bool <== $set1.isSuperset($set2);
+    while($set1.isSuperset($set2)){
+        if($set2.isSubset($ser5)){
+            $set2.delete();
+        }
+        else{
+            pass;
+        }
+    }
+    bool1 <== $set.contain(5);
+    bool2 <== $set.contain('zeynep');
+    bool3 <== $set.contain(count);
+    bool4 <== $set.contain($set2);
+    foo1 <== 4;
+    func foo(foo1){
+        $set.add(foo1);
+        $set.add(count);
+        $set.add($set1);
+        return $set;
+    }
+    $set1 <== foo(foo1);
+    for(i = 1:3){
+        $set1.print();
+    }
+    if(bool1 || bool2){
+        $set2.input();
+    }
+    else{
+        $set1.print();
+    }
+    temp <== 4;
+    temp1 <== 67;
+    while(temp <= temp1){
+        if($set1.isSubset($set2)){
+            temp <== 68;
+        }
+        else{
+            $set1.add($set2);
+        }
+    }
+    
 
-    # Program second # 
-    #Create set #
-    firstCount <== 5;
-    secondCount <== 7;
-    thirdCount <== 9;
-    #Adding element to set#
-    $set1.add(firstCount);
-    $set1.add(secondCount);
-    $set1.add(thirdCount);
-    # Print set #
-    $set1.print();
-    # Create other set #
-    # take Input from Conso32le#
-    # Print set #
-    $set2.print();
-    #Intersection#
-    # Print set #
-    $set3.print();
-    check <== $set3.isSubset($set1);
-    while(false && true){pass;}
-    $set1.delete();
-    $set2.delete();
-    $set3.delete();
-
-
-    # Sub Program #
-    # Create set #
-    $firstGrade <== new Set;
-    $secondGrade <== new Set;
-    $thirdGrade <== new Set;
-
-    # Assignments #
-    student1 <== 'kerim';
-    student2 <== 'gamze';
-    student3 <== 'hakan';
-
-    # Adding element to set #
-    $firstGrade.add(student1);
-    $firstGrade.add('emin');
-    $firstGrade.add('Vehbi');
-    $secondGrade.add(student2);
-    $secondGrade.add(student3);
-    $secondGrade.add('ali');
-
-    # Cartesian #
-    $set1 <== $set2.cart($set2,$set3);
-
-    # Print set #
-    $firstGrade.print();
-    $secondGrade.print();
-
-    # For Loop  #
-    for(i = 1:3){pass;}
-
-    func graduate(args){pass;}
-    Ali <== funcName(args);
-
-    if(3 < 45){return;}
-    else{pass;}
-
-    $firstGrade.delete();
-    while($set3.isSubset($set1)){pass;}
 }

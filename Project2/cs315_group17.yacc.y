@@ -108,10 +108,11 @@ set_initilize:
 	SET_TYPE ASSING_OP set_expr
 func_call_dec:
 	IDENTIFIER ASSING_OP funct_call
+	|SET_TYPE ASSING_OP funct_call
 	|funct_call
 
 element:
-	SINGLE_QUOTE ALPHANUMERIC SINGLE_QUOTE
+	SINGLE_QUOTE IDENTIFIER SINGLE_QUOTE
 element_expr:
 	IDENTIFIER ASSING_OP element
 
@@ -141,10 +142,6 @@ set_logical_expr:
 	|subset_expr
 	
 
-
-// ***** INITIALIZE *****
-set_initialize:
-	 SET_TYPE ASSIGN_OP set_expr
 
 
 // ***** SETS *****
@@ -177,6 +174,8 @@ set_contain_expr:
 	SET_TYPE DOT CONTAIN_KEY LP IDENTIFIER RP
 	|SET_TYPE DOT CONTAIN_KEY LP element RP
 	|SET_TYPE DOT CONTAIN_KEY LP INTEGER RP
+	|SET_TYPE DOT CONTAIN_KEY LP SET_TYPE RP
+
 
 superset_expr:
 	// false <== $set.isSuperset($set)
@@ -206,8 +205,8 @@ block_stmts:
 	// pass;
 	// return;
 	PASS END_STMT
-	|RETURN END_STMT
-	|statements
+	|statements RETURN args_type END_STMT
+	|statements 
 
 logical_expr: 
 	// 4 < 89
@@ -236,6 +235,8 @@ conditional_stmt:
 
 if_stmt:
 	IF LP logical_expr RP LB block_stmts RB else_stmt
+	|IF LP set_logical_expr RP LB block_stmts RB else_stmt
+ 
 
 else_stmt:
 	ELSE LB block_stmts RB
@@ -244,26 +245,23 @@ else_stmt:
 funct_dec:
 	FUNCTION IDENTIFIER LP args RP LB block_stmts RB
 funct_call:
-	IDENTIFIER LP funct_call_args RP  
+	IDENTIFIER LP args RP  
 
 args:
 	IDENTIFIER
 	|
 	|composite_args
 composite_args:
-	IDENTIFIER COMMA composite_args
-	|IDENTIFIER
+	args_type COMMA composite_args
+	|args_type
 
-funct_call_args:
-	funct_call_arg_type
-	|funct_call_args COMMA funct_call_arg_type 
-
-funct_call_arg_type:
- 	IDENTIFIER
+args_type:
+	IDENTIFIER
 	|BOOLEAN
 	|INTEGER
 	|element
 	|SET_TYPE
+
 	
 // ******* INPUTS ********
 input_set_expr:
