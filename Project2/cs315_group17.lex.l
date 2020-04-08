@@ -16,10 +16,7 @@ close_par ")"
 open_bracket "{"
 close_bracket "}"
 underscore  "_"
-<<<<<<< HEAD
-=======
 single_quote "'" 
->>>>>>> 327bc346043d5beedde6c2eb5b3e7708c52dd149
 coma ","
 dot "."
 colon ":"
