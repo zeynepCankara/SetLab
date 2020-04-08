@@ -82,8 +82,6 @@ statement:
 	|conditional_stmt
 
 
-
-
 // ****** Comment Line *****
 comment_line:
 	COMMENT_SIGN sentence COMMENT_SIGN
