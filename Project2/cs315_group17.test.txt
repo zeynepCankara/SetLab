@@ -42,7 +42,7 @@ main(){
     student2 <== 'gamze';
     student3 <== 'hakan';
 
-    #Adding element to Set#
+    # Adding element to set #
     $firstGrade.add(student1);
     $firstGrade.add('emin');
     $firstGrade.add('Vehbi');
@@ -50,7 +50,7 @@ main(){
     $secondGrade.add(student3);
     $secondGrade.add('ali');
 
-    #Cartesian #
+    # Cartesian #
     $set1 <== $set2.cart($set2,$set3);
 
     # Print set #
@@ -58,9 +58,8 @@ main(){
     $secondGrade.print();
 
     # For Loop  #
-    for(i=1:3){pass;}
+    for(i = 1:3){pass;}
 
-    # Functions  #
     func graduate(args){pass;}
     $firstGrade.func_name(args);
 
