@@ -111,7 +111,6 @@ element:
 	SINGLE_QUOTE IDENTIFIER SINGLE_QUOTE
 element_expr:
 	IDENTIFIER ASSING_OP element
-
 int_expr:
 	IDENTIFIER ASSING_OP INTEGER
 bool_expr:
@@ -163,7 +162,7 @@ set_intersection_op:
 	SET_TYPE DOT INTERSECTION LP SET_TYPE RP
 cartesian_expr:
 	// $set1<==$set2.cartesian($set2,$set3);
-	SET_TYPE DOT CARTESIAN LP SET_TYPE COMMA SET_TYPE RP
+	SET_TYPE DOT CARTESIAN LP SET_TYPE RP
 	
 
 set_contain_expr: 

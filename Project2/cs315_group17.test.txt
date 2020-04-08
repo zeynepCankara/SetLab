@@ -8,7 +8,7 @@ main(){
     $set2.input();
     $set1 <== $set1.intersection($set2);
     $set1 <== $set1.union($set2);
-    $set1 <== $set1.cart($set2,$set4);
+    $set1 <== $set1.cart($set2);
     
     # adding operation #
     $set.add(1);
