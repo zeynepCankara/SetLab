@@ -228,10 +228,9 @@ logical_expr:
 //********* Confitional Statement ******//
 conditional_stmt: 
 	if_stmt
-	|else_stmt
 
 if_stmt:
-	IF LP logical_expr RP LB block_stmts RB
+	IF LP logical_expr RP LB block_stmts RB else_stmt
 
 else_stmt:
 	ELSE LB block_stmts RB
@@ -253,7 +252,7 @@ composite_args:
 funct_call_args:
 	funct_call_arg_type
 	|funct_call_args COMMA funct_call_arg_type 
-	
+
 funct_call_arg_type:
  	IDENTIFIER
 	|BOOLEAN
