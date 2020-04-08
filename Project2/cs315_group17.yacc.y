@@ -90,7 +90,7 @@ comment_line:
 
 sentence:
 	ALPHANUMERIC sentence
-	| ALPHANUMERIC	
+	|ALPHANUMERIC	
 	
 // ***** DECLERATIONS *****
 expr:
@@ -152,15 +152,15 @@ subset_expr:
 // ***** INITIALIZE *****
 set_init: 
 	// $set <== new Set
-	SET_TYPE ASSIGN_OP NEW_KEYWORD SET END_STMT
+	SET_TYPE ASSIGN_OP NEW_KEYWORD SET
 
 
 // ***** SETS *****
 set_add_op:
 	// $set.add(identifier)
-	SET_TYPE DOT ADD LP IDENTIFIER RP END_STMT
-	|SET_TYPE DOT ADD LP ALPHANUMERIC RP END_STMT
-	|SET_TYPE DOT ADD LP INTEGER RP END_STMT
+	SET_TYPE DOT ADD LP IDENTIFIER RP
+	|SET_TYPE DOT ADD LP ALPHANUMERIC RP
+	|SET_TYPE DOT ADD LP INTEGER RP
 
 set_delete_op:
 	// $set.delete();
@@ -168,14 +168,14 @@ set_delete_op:
 
 set_union_op:
 	// $set1<==$set2.union($set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT UNION LP SET_TYPE RP END_STMT
+	SET_TYPE ASSIGN_OP SET_TYPE DOT UNION LP SET_TYPE RP
 
 set_intersection_op:
 	// $set1<==$set2.intersection($set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT INTERSECTION LP SET_TYPE RP END_STMT
+	SET_TYPE ASSIGN_OP SET_TYPE DOT INTERSECTION LP SET_TYPE RP
 cartesian_expr:
 	// $set1<==$set2.cartesian($set2,$set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT CARTESIAN LP SET_TYPE COMMA SET_TYPE RP END_STMT
+	SET_TYPE ASSIGN_OP SET_TYPE DOT CARTESIAN LP SET_TYPE COMMA SET_TYPE RP
 	
 // ******* LOOPS *********
 loops:
@@ -233,32 +233,30 @@ args:
 composite_args:
 	IDENTIFIER COMMA composite_args
 	|IDENTIFIER
+
+funct_call_args:
+	funct_call_arg_type
+	|funct_call_args COMMA funct_call_arg_type
 funct_call_arg_type:
  	IDENTIFIER
 	|BOOLEAN
 	|INTEGER
 	|ALPHANUMERIC
-funct_call_args:
-	funct_call_arg_type
-	|funct_call_args COMMA funct_call_arg_type
 // ******* INPUTS ********
 input_set_expr:
 	// $set1 <== inputElements();
-	SET_TYPE ASSIGN_OP CONSOLE_IN LP RP END_STMT
+	SET_TYPE ASSIGN_OP CONSOLE_IN LP RP
 	
 input_element_expr:
  	// $set1.input();
-	SET_TYPE DOT ELEMENT_IN LP RP END_STMT
+	SET_TYPE DOT ELEMENT_IN LP RP
 
 // ******* OUTPUTS ********
 output_expr:
  	// $set1.print();
-	SET_TYPE DOT CONSOLE_OUT LP RP END_STMT
+	SET_TYPE DOT CONSOLE_OUT LP RP
 
 %%
-
-
-
 void yyerror(char *s) {
 	fprintf(stdout, "line %d: %s\n", yylineno,s);
 }
