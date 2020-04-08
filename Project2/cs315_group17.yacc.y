@@ -107,6 +107,7 @@ set_initilize:
 	SET_TYPE ASSING_OP set_expr
 fuct_call_dec:
 	IDENTIFIER ASSING_OP funct_call
+	|funct_call
 
 
 element_expr:
@@ -239,7 +240,10 @@ else_stmt:
 funct_dec:
 	FUNCTION IDENTIFIER LP args RP LB block_stmts RB
 funct_call:
-	IDENTIFIER LP funct_call_args RP
+	IDENTIFIER DOT LP funct_call_args RP  
+	|SET_TYPE DOT LP funct_call_args RP  
+	|IDENTIFIER LP funct_call_args RP  
+
 args:
 	IDENTIFIER
 	|
@@ -256,6 +260,8 @@ funct_call_arg_type:
 	|BOOLEAN
 	|INTEGER
 	|ALPHANUMERIC
+	|SET_TYPE
+	
 // ******* INPUTS ********
 input_set_expr:
 	// $set1 <== inputElements();
