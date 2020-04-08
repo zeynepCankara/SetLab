@@ -78,6 +78,7 @@ statement:
 	|expr  
 	|loops 
 	|funct_dec
+	|if_stmt
 
 
 
@@ -89,7 +90,9 @@ comment_line:
 	comment_symbol comment_symbol
 	|comment_symbol sentence comment_symbol
 
-	
+sentence:
+	ALPHANUMERIC sentence
+	| ALPHANUMERIC	
 	
 // ***** DECLERATIONS *****
 expr:
@@ -97,17 +100,21 @@ expr:
 	|int_expr
 	|bool_expr
 	|set_expr_list
+	|indetifier_dec
+	|fuct_call_dec
+indetifier_dec:
+	IDENTIFIER ASSING_OP IDENTIFIER END_STMT
+fuct_call_dec:
+	IDENTIFIER ASSING_OP funct_call END_STMT
+
+
 element_expr:
 	IDENTIFIER ASSING_OP ALPHANUMERIC END_STMT
-	|IDENTIFIER ASSING_OP IDENTIFIER END_STMT
+
 int_expr:
 	IDENTIFIER ASSING_OP INTEGER END_STMT
-	|IDENTIFIER ASSING_OP IDENTIFIER END_STMT
-	|IDENTIFIER ASSING_OP funct_call END_STMT
 bool_expr:
 	|IDENTIFIER ASSING_OP BOOLEAN END_STMT
-	|IDENTIFIER ASSING_OP IDENTIFIER END_STMT
-	|IDENTIFIER ASSING_OP funct_call END_STMT
 	|IDENTIFIER ASSING_OP set_logical_expr END_STMT
 
 set_expr_list:
@@ -213,7 +220,29 @@ logical_expr:
 	|IDENTIFIER EQUAL IDENTIFIER
 	|IDENTIFIER NOT_EQUAL IDENTIFIER
 
-
+//********* If Statement ******//
+if_stmt:
+	IF LP logical_expr RP LB block_stmts RB
+//******** FUnction ********//
+funct_dec:
+	FUNCTION IDENTIFIER LP args RP LB block_stmts RB
+funct_call:
+	IDENTIFIER LP funct_call_args RP
+args:
+	IDENTIFIER
+	|
+	|composite_args
+composite_args:
+	IDENTIFIER COMMA composite_args
+	|IDENTIFIER
+funct_call_arg_type:
+ 	IDENTIFIER
+	|BOOLEAN
+	|INTEGER
+	|ALPHANUMERIC
+funct_call_args:
+	funct_call_arg_type
+	|funct_call_args COMMA funct_call_arg_type
 // ******* INPUTS ********
 input_set_expr:
 	// $set1 <== inputElements();
