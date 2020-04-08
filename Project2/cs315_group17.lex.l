@@ -10,25 +10,20 @@ pass pass
 if if
 else else
 new_line "\n"
-space " "
 open_par "("
 close_par ")"
 open_bracket "{"
 close_bracket "}"
-underscore  "_"
 single_quote "'" 
 coma ","
 dot "."
 colon ":"
 comment_sign \#
-upper [A-Z]
-lower [a-z]
 digit [0-9]
 non_zero_digit [1-9]
 sign [+-]
 number {non_zero_digit}{digit}*
-letter {underscore}|{upper}|{lower}
-alphanumeric ({letter}|{digit})+
+
 assign_op <==
 identifier [A-Za-z][A-Za-z0-9]*
 new "new"
@@ -79,7 +74,6 @@ end_stmt ";"
 {close_par}  return RP;
 {open_bracket} return LB;
 {close_bracket}  return RB; 
-{underscore}     return UNDERSCORE;
 {coma}           return COMMA;
 {dot}             return DOT;
 {int}             return INTEGER; 
@@ -113,7 +107,6 @@ end_stmt ";"
 {or_op}                 return OR;
 {and_op}                return AND;
 {identifier}            return IDENTIFIER;
-{alphanumeric}		return ALPHANUMERIC;
 {set_type}				return SET_TYPE;
 {end_stmt}				return END_STMT;
 {new_line} ; 

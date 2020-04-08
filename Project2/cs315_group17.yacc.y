@@ -16,7 +16,6 @@ extern int yylineno;
 %token RP
 %token LB
 %token RB 
-%token UNDERSCORE
 %token COMMA
 %token DOT
 %token INTEGER
@@ -50,7 +49,6 @@ extern int yylineno;
 %token OR
 %token AND
 %token IDENTIFIER
-%token ALPHANUMERIC
 %token SET_TYPE
 %token END_STMT
 %token SINGLE_QUOTE
@@ -80,8 +78,6 @@ statement:
 	|loops 
 	|funct_dec
 	|conditional_stmt
-
-
 
 
 // ****** Comment Line *****
@@ -160,7 +156,7 @@ set_union_op:
 	//  
 	SET_TYPE DOT UNION LP SET_TYPE RP
 set_init: 
-	// $set <== new Set
+	// $set <== NEW_KEYWORD SET
 	NEW_KEYWORD SET
 set_intersection_op:
 	// $set1<==$set2.intersection($set3);
