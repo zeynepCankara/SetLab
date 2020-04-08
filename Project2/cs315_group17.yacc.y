@@ -75,7 +75,7 @@ statements:
 
 statement:
 	comment_line 
-	|expr  
+	|expr END_STMT
 	|loops 
 	|funct_dec
 	|if_stmt
@@ -84,11 +84,9 @@ statement:
 
 
 // ****** Comment Line *****
-comment_symbol:
-	COMMENT_SIGN
 comment_line:
-	comment_symbol comment_symbol
-	|comment_symbol sentence comment_symbol
+	COMMENT_SIGN sentence COMMENT_SIGN
+
 
 sentence:
 	ALPHANUMERIC sentence
@@ -103,24 +101,24 @@ expr:
 	|indetifier_dec
 	|fuct_call_dec
 indetifier_dec:
-	IDENTIFIER ASSING_OP IDENTIFIER END_STMT
+	IDENTIFIER ASSING_OP IDENTIFIER
 fuct_call_dec:
-	IDENTIFIER ASSING_OP funct_call END_STMT
+	IDENTIFIER ASSING_OP funct_call
 
 
 element_expr:
-	IDENTIFIER ASSING_OP ALPHANUMERIC END_STMT
+	IDENTIFIER ASSING_OP ALPHANUMERIC
 
 int_expr:
-	IDENTIFIER ASSING_OP INTEGER END_STMT
+	IDENTIFIER ASSING_OP INTEGER
 bool_expr:
 	|IDENTIFIER ASSING_OP BOOLEAN END_STMT
-	|IDENTIFIER ASSING_OP set_logical_expr END_STMT
+	|IDENTIFIER ASSING_OP set_logical_expr
 
 set_expr_list:
 	set_expr
-	| set_delete_op
-	| set_add_op
+	|set_delete_op
+	|set_add_op
 	|set_logical_expr
 	|input_set_expr
 	|input_element_expr
@@ -139,16 +137,16 @@ set_logical_expr:
 
 
 set_contain_expr: 
-	SET_TYPE DOT CONTAIN_KEY LP IDENTIFIER RP END_STMT
-	|SET_TYPE DOT CONTAIN_KEY LP ALPHANUMERIC RP END_STMT
-	|SET_TYPE DOT CONTAIN_KEY LP INTEGER RP END_STMT
+	SET_TYPE DOT CONTAIN_KEY LP IDENTIFIER RP
+	|SET_TYPE DOT CONTAIN_KEY LP ALPHANUMERIC RP
+	|SET_TYPE DOT CONTAIN_KEY LP INTEGER RP
 
 superset_expr:
 	// $set.isSuperset($set)
-	SET_TYPE DOT IS_SUPERSET LP SET_TYPE RP END_STMT
+	SET_TYPE DOT IS_SUPERSET LP SET_TYPE RP
 subset_expr:
 	// $set.isSubset($set)
-	SET_TYPE DOT IS_SUBSET LP SET_TYPE RP END_STMT
+	SET_TYPE DOT IS_SUBSET LP SET_TYPE RP
 
 
 // ***** INITIALIZE *****
