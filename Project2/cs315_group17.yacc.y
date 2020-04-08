@@ -192,8 +192,10 @@ while_stmt:
 
 for_stmt: 
 	// for(i=12:200){block_stmts}
-	FOR LP IDENTIFIER LOOP_ASSIGN_OP INTEGER COLON INTEGER LB block_stmts RB 
+	FOR LP for_expr RP LB block_stmts RB  
 
+for_expr:
+	IDENTIFIER LOOP_ASSIGN_OP INTEGER COLON INTEGER
 
 block_stmts:
 	// pass;
