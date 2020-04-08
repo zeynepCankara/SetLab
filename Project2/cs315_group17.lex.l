@@ -16,7 +16,7 @@ close_par ")"
 open_bracket "{"
 close_bracket "}"
 underscore  "_"
-/* single_quote "'" */
+single_quote "'" 
 coma ","
 dot "."
 colon ":"
@@ -118,6 +118,7 @@ end_stmt ";"
 {end_stmt}				return END_STMT;
 {new_line} ; 
 [ \t] ;
+{single_quote}		return SINGLE_QUOTE;
 %%
 
 int yywrap(void){

@@ -53,6 +53,7 @@ extern int yylineno;
 %token ALPHANUMERIC
 %token SET_TYPE
 %token END_STMT
+%token SINGLE_QUOTE
 
 //%start program
 %start program
@@ -109,9 +110,10 @@ func_call_dec:
 	IDENTIFIER ASSING_OP funct_call
 	|funct_call
 
-
+element:
+	SINGLE_QUOTE ALPHANUMERIC SINGLE_QUOTE
 element_expr:
-	IDENTIFIER ASSING_OP ALPHANUMERIC
+	IDENTIFIER ASSING_OP element
 
 int_expr:
 	IDENTIFIER ASSING_OP INTEGER
@@ -149,8 +151,9 @@ set_initialize:
 set_add_op:
 	// $set.add(identifier)
 	SET_TYPE DOT ADD LP IDENTIFIER RP
-	|SET_TYPE DOT ADD LP ALPHANUMERIC RP
+	|SET_TYPE DOT ADD LP element RP
 	|SET_TYPE DOT ADD LP INTEGER RP
+	|SET_TYPE DOT ADD LP SET_TYPE RP
 
 set_delete_op:
 	// $set.delete();
@@ -172,7 +175,7 @@ cartesian_expr:
 
 set_contain_expr: 
 	SET_TYPE DOT CONTAIN_KEY LP IDENTIFIER RP
-	|SET_TYPE DOT CONTAIN_KEY LP ALPHANUMERIC RP
+	|SET_TYPE DOT CONTAIN_KEY LP element RP
 	|SET_TYPE DOT CONTAIN_KEY LP INTEGER RP
 
 superset_expr:
@@ -260,7 +263,7 @@ funct_call_arg_type:
  	IDENTIFIER
 	|BOOLEAN
 	|INTEGER
-	|ALPHANUMERIC
+	|element
 	|SET_TYPE
 	
 // ******* INPUTS ********
