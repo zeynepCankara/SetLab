@@ -190,6 +190,7 @@ loops:
 while_stmt: 
 	// while(logical_expr){block_stmts}
 	WHILE LP logical_expr RP LB block_stmts RB
+	|WHILE LP set_logical_expr RP LB block_stmts RB
 
 for_stmt: 
 	// for(i=12:200){block_stmts}
@@ -203,6 +204,7 @@ block_stmts:
 	// return;
 	PASS END_STMT
 	|RETURN END_STMT
+	|statements
 
 logical_expr: 
 	// 4 < 89

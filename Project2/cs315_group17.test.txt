@@ -79,4 +79,5 @@ main(){
     else{pass;}
 
     $firstGrade.delete();
+    while($set3.isSubset($set1)){pass;}
 }
