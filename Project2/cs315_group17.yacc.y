@@ -189,6 +189,8 @@ while_stmt:
 	// while(logical_expr){block_stmts}
 	WHILE LP logical_expr RP LB block_stmts RB
 	|WHILE LP set_logical_expr RP LB block_stmts RB
+	|WHILE LP funct_call RP LB block_stmts RB
+
 
 for_stmt: 
 	// for(i=12:200){block_stmts}
@@ -232,6 +234,9 @@ conditional_stmt:
 if_stmt:
 	IF LP logical_expr RP LB block_stmts RB else_stmt
 	|IF LP set_logical_expr RP LB block_stmts RB else_stmt
+	|IF LP funct_call RP LB block_stmts RB else_stmt
+
+	
  
 
 else_stmt:

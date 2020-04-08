@@ -55,6 +55,20 @@ main(){
             $set1.add($set2);
         }
     }
+    while(foo(foo1)){
+        if($set1.isSubset($set2)){
+            temp <== 68;
+        }
+        else{
+            $set1.add($set2);
+        }
+    }
+    if(foo(foo1)){
+            temp <== 68;
+    }
+    else{
+        $set1.add($set2);
+    }
     
 
 }
