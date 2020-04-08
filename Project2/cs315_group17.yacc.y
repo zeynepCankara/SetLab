@@ -99,13 +99,13 @@ expr:
 	|bool_expr
 	|set_expr_list
 	| set_initilize
-	|fuct_call_dec
+	|func_call_dec
 	| identifier_dec
 identifier_dec:
 	IDENTIFIER ASSING_OP IDENTIFIER
 set_initilize:
 	SET_TYPE ASSING_OP set_expr
-fuct_call_dec:
+func_call_dec:
 	IDENTIFIER ASSING_OP funct_call
 	|funct_call
 
@@ -240,9 +240,7 @@ else_stmt:
 funct_dec:
 	FUNCTION IDENTIFIER LP args RP LB block_stmts RB
 funct_call:
-	IDENTIFIER DOT LP funct_call_args RP  
-	|SET_TYPE DOT LP funct_call_args RP  
-	|IDENTIFIER LP funct_call_args RP  
+	IDENTIFIER LP funct_call_args RP  
 
 args:
 	IDENTIFIER
@@ -254,7 +252,8 @@ composite_args:
 
 funct_call_args:
 	funct_call_arg_type
-	|funct_call_args COMMA funct_call_arg_type
+	|funct_call_args COMMA funct_call_arg_type 
+	
 funct_call_arg_type:
  	IDENTIFIER
 	|BOOLEAN
