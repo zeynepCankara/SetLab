@@ -39,6 +39,22 @@ main(){
     for(i = 1:3){
         $set1.print();
     }
+    if(bool1 || bool2){
+        $set2.input();
+    }
+    else{
+        $set1.print();
+    }
+    temp <== 4;
+    temp1 <== 67;
+    while(temp <= temp1){
+        if($set1.isSubset($set2)){
+            temp <== 68;
+        }
+        else{
+            $set1.add($set2);
+        }
+    }
     
 
 }
