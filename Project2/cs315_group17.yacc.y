@@ -98,10 +98,13 @@ expr:
 	|int_expr
 	|bool_expr
 	|set_expr_list
-	|indetifier_dec
+	| set_initilize
 	|fuct_call_dec
-indetifier_dec:
+	| identifier_dec
+identifier_dec:
 	IDENTIFIER ASSING_OP IDENTIFIER
+set_initilize:
+	SET_TYPE ASSING_OP set_expr
 fuct_call_dec:
 	IDENTIFIER ASSING_OP funct_call
 
@@ -117,24 +120,23 @@ bool_expr:
 
 set_expr_list:
 	set_delete_op
-	|set_initialize
 	|set_add_op
-	|input_set_expr
 	|input_element_expr
 	|output_expr
 
-set_initialize:
-	 SET_TYPE ASSIGN_OP set_expr
+
 set_expr:
 	set_init
 	|set_union_op
 	|set_intersection_op
 	|cartesian_expr
+	|input_set_expr
 
 set_logical_expr:
 	set_contain_expr
 	|superset_expr
 	|subset_expr
+	
 
 
 // ***** INITIALIZE *****
@@ -254,7 +256,7 @@ funct_call_arg_type:
 // ******* INPUTS ********
 input_set_expr:
 	// $set1 <== inputElements();
-	SET_TYPE ASSIGN_OP CONSOLE_IN LP RP
+	CONSOLE_IN LP RP
 	
 input_element_expr:
  	// $set1.input();
