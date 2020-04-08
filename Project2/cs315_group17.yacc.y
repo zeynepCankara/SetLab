@@ -140,7 +140,8 @@ set_logical_expr:
 
 
 // ***** INITIALIZE *****
-
+set_initialize:
+	 SET_TYPE ASSIGN_OP set_expr
 
 
 // ***** SETS *****
