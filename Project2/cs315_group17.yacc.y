@@ -89,8 +89,8 @@ comment_line:
 
 
 sentence:
-	ALPHANUMERIC sentence
-	|ALPHANUMERIC	
+	IDENTIFIER sentence
+	|IDENTIFIER	
 	
 // ***** DECLERATIONS *****
 expr:

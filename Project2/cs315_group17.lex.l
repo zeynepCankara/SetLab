@@ -20,7 +20,7 @@ underscore  "_"
 coma ","
 dot "."
 colon ":"
-comment_sign "#"
+comment_sign \#
 upper [A-Z]
 lower [a-z]
 digit [0-9]
@@ -30,9 +30,9 @@ number {non_zero_digit}{digit}*
 letter ({underscore}|{upper}|{lower})
 alphanumeric ({letter}|{digit})+
 assign_op "<=="
-identifier {letter}({alphanumeric}|_)*
+identifier [A-Za-z][A-Za-z0-9]*
 new "new"
-set_keyword "Set"
+set_keyword Set
 delete "delete"
 true "true"
 false "false"
@@ -62,7 +62,7 @@ bool {true}|{false}
 int {sign}?{number}
 
 /* set type */
-set_token "$"
+set_token \$
 set_type {set_token}{identifier}*
 /* statement end */
 end_stmt ";"

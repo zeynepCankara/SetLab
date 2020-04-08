@@ -1,7 +1,7 @@
 main(){
-    # Program 1: #
-    #Create Set #
-    $set1 <== new Set;
+    # Program first #
+    #Create set #
+    $ali <== new Set;
     #Adding element to Set#
     $set1.add(Zeynep);
     $set1.add(Tolga);
