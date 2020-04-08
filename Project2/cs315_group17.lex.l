@@ -31,8 +31,8 @@ letter ({underscore}|{upper}|{lower})
 alphanumeric ({letter}|{digit})+
 assign_op <==
 identifier [A-Za-z][A-Za-z0-9]*
-new new
-set_keyword Set
+new "new"
+set_keyword "Set"
 delete "delete"
 true "true"
 false "false"

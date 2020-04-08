@@ -25,14 +25,14 @@ main(){
     # Print set #
     $set3.print();
     check <== $set3.isSubset($set1);
-    while(check && true){pass;}
-    delete $set1;
-    delete $set2;
-    delete $set3;
+    while(false && true){pass;}
+    $set1.delete();
+    $set2.delete();
+    $set3.delete();
 
 
-    # Program 3: #
-    #Create Set #
+    # Sub Program #
+    # Create set #
     $firstGrade <== new Set;
     $secondGrade <== new Set;
     $thirdGrade <== new Set;
