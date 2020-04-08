@@ -112,18 +112,19 @@ element_expr:
 int_expr:
 	IDENTIFIER ASSING_OP INTEGER
 bool_expr:
-	|IDENTIFIER ASSING_OP BOOLEAN END_STMT
+	IDENTIFIER ASSING_OP BOOLEAN
 	|IDENTIFIER ASSING_OP set_logical_expr
 
 set_expr_list:
-	set_expr
-	|set_delete_op
+	set_delete_op
+	|set_initialize
 	|set_add_op
-	|set_logical_expr
 	|input_set_expr
 	|input_element_expr
 	|output_expr
 
+set_initialize:
+	 SET_TYPE ASSIGN_OP set_expr
 set_expr:
 	set_init
 	|set_union_op
@@ -135,6 +136,35 @@ set_logical_expr:
 	|superset_expr
 	|subset_expr
 
+
+// ***** INITIALIZE *****
+
+
+
+// ***** SETS *****
+set_add_op:
+	// $set.add(identifier)
+	SET_TYPE DOT ADD LP IDENTIFIER RP
+	|SET_TYPE DOT ADD LP ALPHANUMERIC RP
+	|SET_TYPE DOT ADD LP INTEGER RP
+
+set_delete_op:
+	// $set.delete();
+	SET_TYPE DOT DELETE LP RP
+
+set_union_op:
+	//  
+	SET_TYPE DOT UNION LP SET_TYPE RP
+set_init: 
+	// $set <== new Set
+	NEW_KEYWORD SET
+set_intersection_op:
+	// $set1<==$set2.intersection($set3);
+	SET_TYPE DOT INTERSECTION LP SET_TYPE RP
+cartesian_expr:
+	// $set1<==$set2.cartesian($set2,$set3);
+	SET_TYPE DOT CARTESIAN LP SET_TYPE COMMA SET_TYPE RP
+	
 
 set_contain_expr: 
 	SET_TYPE DOT CONTAIN_KEY LP IDENTIFIER RP
@@ -148,35 +178,6 @@ subset_expr:
 	// true <== $set.isSubset($set)
 	SET_TYPE DOT IS_SUBSET LP SET_TYPE RP
 
-
-// ***** INITIALIZE *****
-set_init: 
-	// $set <== new Set
-	SET_TYPE ASSIGN_OP NEW_KEYWORD SET
-
-
-// ***** SETS *****
-set_add_op:
-	// $set.add(identifier)
-	SET_TYPE DOT ADD LP IDENTIFIER RP
-	|SET_TYPE DOT ADD LP ALPHANUMERIC RP
-	|SET_TYPE DOT ADD LP INTEGER RP
-
-set_delete_op:
-	// $set.delete();
-	SET_TYPE DOT DELETE LP RP END_STMT
-
-set_union_op:
-	// $set1<==$set2.union($set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT UNION LP SET_TYPE RP
-
-set_intersection_op:
-	// $set1<==$set2.intersection($set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT INTERSECTION LP SET_TYPE RP
-cartesian_expr:
-	// $set1<==$set2.cartesian($set2,$set3);
-	SET_TYPE ASSIGN_OP SET_TYPE DOT CARTESIAN LP SET_TYPE COMMA SET_TYPE RP
-	
 // ******* LOOPS *********
 loops:
 	while_stmt
