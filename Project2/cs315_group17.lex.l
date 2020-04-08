@@ -16,7 +16,6 @@ close_par ")"
 open_bracket "{"
 close_bracket "}"
 underscore  "_"
-/* single_quote "'" */
 coma ","
 dot "."
 colon ":"
