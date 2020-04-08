@@ -78,7 +78,7 @@ statement:
 	|expr END_STMT
 	|loops 
 	|funct_dec
-	|if_stmt
+	|conditional_stmt
 
 
 
@@ -142,10 +142,10 @@ set_contain_expr:
 	|SET_TYPE DOT CONTAIN_KEY LP INTEGER RP
 
 superset_expr:
-	// $set.isSuperset($set)
+	// false <== $set.isSuperset($set)
 	SET_TYPE DOT IS_SUPERSET LP SET_TYPE RP
 subset_expr:
-	// $set.isSubset($set)
+	// true <== $set.isSubset($set)
 	SET_TYPE DOT IS_SUBSET LP SET_TYPE RP
 
 
@@ -218,9 +218,17 @@ logical_expr:
 	|IDENTIFIER EQUAL IDENTIFIER
 	|IDENTIFIER NOT_EQUAL IDENTIFIER
 
-//********* If Statement ******//
+//********* Confitional Statement ******//
+conditional_stmt: 
+	if_stmt
+	|else_stmt
+
 if_stmt:
 	IF LP logical_expr RP LB block_stmts RB
+
+else_stmt:
+	ELSE LB block_stmts RB
+
 //******** FUnction ********//
 funct_dec:
 	FUNCTION IDENTIFIER LP args RP LB block_stmts RB
