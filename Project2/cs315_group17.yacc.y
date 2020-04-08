@@ -204,6 +204,7 @@ block_stmts:
 	// return;
 	PASS END_STMT
 	|RETURN END_STMT
+	|statements
 
 logical_expr: 
 	// 4 < 89
