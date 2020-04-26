@@ -2,27 +2,27 @@
 
 ## **Project Description** :checkered_flag:
 
-### **Project 1**
+* SetLab is a programming language created for efficient set operations. 
+* The programming language created as the final project of the Bilkent University CS315 programming languages course. 
 
-- BNF Description of the SetLab Language
-- Explanation of the SetLab Language Constructions
-- Descriptions of SetLab Non-trivial Tokens 
-- Lexical Analyzer for SetLab Language (written with Lex)
-- Example SetLab Programs 
+#### **SetLab contains following language elements:** :pencil:
 
-### **Project 1 Report** :pencil: 
-* [Project 1 Report](https://docs.google.com/document/d/1mkUj1QRcegbJqRd91uCttY9NKCM8czoi_KYK2sXhPnM/edit?usp=sharing)
+1. main program statements (beginning of the execution),
+2. declarations (variables, constants etc.),
+3. assignment statement,
+4. Conditional (selection) statements,
+5. Loop Statements,
+6. Input (from a file or keyboard) and output (to a file or console) statements,
+7. function definition and function call statements.
 
-### **Project 2**
-- BNF Description of the SetLab Language
-- Parser for SetLab Language (written with Yacc)
+### **Content **
 
-### **Project 2 Report** :pencil: 
-* [Project 2 Report](https://docs.google.com/document/d/1hjypPnGsEHPMNe_vCtepp65XA-aKhQHTzwsFlOZ6ADs/edit?usp=sharing)
+* `cs315_group17.lex.l`: Lex specification, Lexical Analyzer to tokenize the input.
+* `cs315_group17.yacc.y`: Yacc specification, Parser to check acceptance of the input.
+* `cs315_group17.test.txt`: Test SetLab program file.
+* `Makefile`: Running SetLab test file to check whether test file represents a valid program in SetLab.
+* `cs315_group17_report.pdf`: Report explaining the tokens and complete BNF description of the SetLab language.
 
-#### **Resources** :book: 
-* [Yacc](http://www.cs.bilkent.edu.tr/~duygulu/Courses/CS315/Notes/Yacc.pdf)
-* [Conflicts](http://www.cs.bilkent.edu.tr/~duygulu/Courses/CS315/Notes/conflicts.pdf)
 
 #### **Team Members**
 
@@ -30,3 +30,5 @@
 * Tolga Çatalpınar
 * Naci Dalkıran 
  
+ ##### ** Grade **
+ - 98/100 :star:
